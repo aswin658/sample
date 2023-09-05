@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show</title>
+</head>
+<style>
+    /* Style for the page heading */
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      color: #333;
+    }
+  
+    /* Style for the table */
+    table {
+      width: 75%;
+      border-collapse: collapse;
+      margin: auto;
+      border: 1px solid #ccc;
+    }
+  
+    /* Style for table headers */
+    th {
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+  
+    /* Style for table cells */
+    td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+  
+    /* Style for edit and delete links */
+    .action-links a {
+      display: inline-block;
+      margin-right: 5px;
+      color: #007bff;
+      text-decoration: none;
+    }
+  
+    /* Hover effect for links */
+    .action-links a:hover {
+      text-decoration: underline;
+    }
+    /* Style for action buttons */
+  .action-button {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Edit button style */
+  .edit-button {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  /* Delete button style */
+  .delete-button {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+  /* Hover effect for buttons */
+  .action-button:hover {
+    opacity: 0.8;
+  }
+  .colored-button {
+  background-color: #46f44c; /* Replace with your desired color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  
+}
+a{
+  text-decoration: none;
+}
+  </style>
+<body>
+    <h1>Student Details</h1>
+
+    <a href="{% url 'addstudent' %}" class="button-link">
+      <button class="colored-button">Add student</button>
+    </a>
+
+    <table border="1px">
+        <thead>
+            <tr>
+              
+              <th>Student ID</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Course</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in students %}
+            <tr>
+              
+                <td>{{ s.id}}</td>
+                <td><a href="{% url 'student_profile' s.id %}" target="_blank">{{ s.first_name }} {{ s.last_name}}</a></td>
+                <td>{{ s.phone_number}}</td>
+                <td>{{ s.course}}</td>
+                
+            </tr>
+
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    
+   
+</body>
+</html>

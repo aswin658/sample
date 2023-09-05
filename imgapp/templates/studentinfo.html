@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    
+<style>
+    /* Container for the form */
+    .form-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #000000;
+      border-radius: 5px;
+      background-color: #ffffff;
+    }
+  
+    /* Style for labels */
+    label {
+      font-weight: bold;
+      color: #000000;
+      display: block;
+      margin-bottom: 5px;
+      font-size: large;
+    }
+  
+    /* Style for input boxes and textarea */
+    input[type="text"], input[type="number"],input[type="file"], textarea,select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #e9e1e1;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    input[type="file"]{
+      background-color: aliceblue;
+    }
+  
+    /* Style for the submit button */
+    button[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  
+    /* Hover effect for the submit button */
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+<body>
+    <center>
+    <h1>Enter Student Details</h1></center>
+
+    <div class="form-container">
+    <form method="post" action="{% url 'student_details' %}" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <label>First Name :</label>
+        <input type="text" name="first_name" class="form-control" placeholder="Enter First Name"><br>
+
+        <label>Last Name :</label>
+        <input type="text" name="last_name" class="form-control" placeholder="Enter Last Name"><br>
+
+        <label>Phone Number :</label>
+        <input type="number" name="phone_number" class="form-control" placeholder="Enter Phone number"><br>
+
+        <label>Email :</label>
+        <input type="text" name="email" class="form-control" placeholder="Enter Email"><br>
+
+        <label>Course :</label>
+        <select name="course">
+          <option value="">Select Course</option>
+          <option value="Python">Python</option>
+          <option value="Java">Java</option>
+          <option value="Dot net">Dot net</option>
+          <option value="Testing">Testing</option>
+          <!-- Add more options as needed -->
+      </select>
+
+        <label>Address :</label>
+        <input type="text" name="address" class="form-control" placeholder="Enter Address"><br><br>
+
+        <input type="file" name="file" class="form-control" accept="image/*"><br><br>
+
+        <button type="submit" class="form-control" >Submit</button>
+    </form></div>
+</body>
+</html>
